@@ -24,8 +24,6 @@ The given node will not be the tail and it will always be a valid node of the li
 Do not return anything from your function.
 
 */
-
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -34,24 +32,10 @@ Do not return anything from your function.
  * }
  */
 /**
- * @param {ListNode} head
- * @return {ListNode}
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
  */
-
-var headNode;
-
-var reverseList = function(head) {
-    if(head == null) return null;
-
-    if(head.next == null){
-        headNode =  head;
-        return head;
-    }
-    
-    reverseList(head.next);
-    
-    head.next.next = head
-    head.next = null;
-    
-    return headNode
+function deleteNode(node) {
+    node.val = node.next.val;
+    node.next = node.next.next;
 };
