@@ -22,6 +22,30 @@ Output: 1->2->3->4->5
  * @return {ListNode}
  */
 
+// SOL T:O(n)/S:O(1)
+
+function removeElements(head, val) {
+  if(head == null) return null;
+    
+    let slow = head;
+    let fast = head.next;
+    
+    while(slow && fast){
+        if(fast.val=== val){
+            fast = fast.next;
+            slow.next = fast;
+        }
+        else{
+            slow = fast
+            fast = fast.next;
+        }
+    }
+    
+    if(head.val == val) return head.next;
+    
+    return head;
+}
+
 
 
 // SOL 1:  T:O(n)/ S:O(1)
