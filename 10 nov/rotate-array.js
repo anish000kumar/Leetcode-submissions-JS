@@ -27,9 +27,9 @@ Note:
 Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
 Could you do it in-place with O(1) extra space?
 Accepted
-231,058
+231,190
 Submissions
-841,787
+842,085
 */
 
 /**
@@ -37,9 +37,38 @@ Submissions
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-function rotate(nums, k) {
-    for(let i = k; k> 0; k--){
+
+
+
+var rotate = function(nums, k){
+    k = k%nums.length
+    reverse(nums, 0, nums.length-1);
+    reverse(nums, 0, k-1)
+    reverse(nums, k, nums.length-1)
+}
+
+
+
+var reverse = function(nums, start, end){
+    if(nums[start] === undefined || nums[end] === undefined) return nums;
+    
+    while(start < end){
+        let temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+        start++;
+        end--;
+    }
+    
+    return nums;
+}
+
+
+var rotate2 = function(nums, k) {
+    
+    while(k > 0){
         nums.unshift(nums.pop())
+        k--;
     }
     
     return nums
